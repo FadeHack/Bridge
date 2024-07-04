@@ -30,12 +30,12 @@ const Sidebar = () => {
         <>
             {/* Desktop Sidebar */}
             <Box className="hidden md:flex w-64 bg-black text-white p-6 flex-col h-screen fixed top-0 left-0">
-                <Text className="text-3xl font-bold mb-6">Bridge</Text>
+                <Text className="text-3xl font-bold mb-6 text-teal-600">Bridge</Text>
                 <Divider borderColor="whiteAlpha.300" />
                 <VStack spacing={4} mt={6} align="start">
                     <Link
                         href="/"
-                        className="flex items-center text-lg hover:text-zinc-400"
+                        className="flex items-center text-lg hover:text-teal-700"
                         onClick={() => router.push('/')}
                     >
                         <HiHome className="mr-2 text-2xl" />
@@ -43,7 +43,7 @@ const Sidebar = () => {
                     </Link>
                     <Link
                         href="/about"
-                        className="flex items-center text-lg hover:text-zinc-400"
+                        className="flex items-center text-lg hover:text-teal-700"
                         onClick={() => router.push('/about')}
                     >
                         <HiInformationCircle className="mr-2 text-2xl" />
@@ -51,7 +51,7 @@ const Sidebar = () => {
                     </Link>
                     <Link
                         href="/contact"
-                        className="flex items-center text-lg hover:text-zinc-400"
+                        className="flex items-center text-lg hover:text-teal-700"
                         onClick={() => router.push('/contact')}
                     >
                         <HiMail className="mr-2 text-2xl" />
@@ -63,7 +63,7 @@ const Sidebar = () => {
 
             {/* Mobile Navbar */}
             <Flex className="bg-black text-white p-4 items-center justify-between fixed top-0 left-0 right-0 z-10">
-                <Text className="text-3xl font-bold">Bridge</Text>
+                <Text className="text-3xl font-bold text-teal-600">Bridge</Text>
 
                 {/* Show hamburger only on smaller screens */}
                 {showHamburger && (
@@ -81,7 +81,7 @@ const Sidebar = () => {
             {isOpen && (
                 <Box className="md:hidden bg-black text-white p-6 flex-col h-screen fixed top-0 left-0 right-0 z-20">
                     <Flex justifyContent="space-between" alignItems="center">
-                        <Text className="text-3xl font-bold">Bridge</Text>
+                        <Text className="text-3xl font-bold text-teal-600">Bridge</Text>
                         <IconButton
                             icon={<HiX />}
                             aria-label="Close"
@@ -93,7 +93,7 @@ const Sidebar = () => {
                     <VStack spacing={4} mt={6} align="start">
                         <Link
                             href="/"
-                            className="flex items-center text-lg hover:text-zinc-400"
+                            className="flex items-center text-lg hover:text-teal-600"
                             onClick={() => {
                                 router.push('/');
                                 handleClose();
@@ -104,7 +104,7 @@ const Sidebar = () => {
                         </Link>
                         <Link
                             href="/about"
-                            className="flex items-center text-lg hover:text-zinc-400"
+                            className="flex items-center text-lg hover:text-teal-600"
                             onClick={() => {
                                 router.push('/about');
                                 handleClose();
@@ -115,7 +115,7 @@ const Sidebar = () => {
                         </Link>
                         <Link
                             href="/contact"
-                            className="flex items-center text-lg hover:text-zinc-400"
+                            className="flex items-center text-lg hover:text-teal-600"
                             onClick={() => {
                                 router.push('/contact');
                                 handleClose();

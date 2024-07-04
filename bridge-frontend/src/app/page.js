@@ -45,8 +45,26 @@ const HomePage = () => {
             // Assuming both tokens have the same decimals
             const decimals = selectedTokens[0].decimals;
             const paddedAmount = (parseFloat(amount) * Math.pow(10, decimals)).toFixed(0);
-
-            router.push(`/quote?srcChainId=${selectedTokens[0].chainId}&fromTokenAddress=${selectedTokens[0].address}&fromTokenName=${selectedTokens[0].name}&fromTokenLogo=${encodeURIComponent(selectedTokens[0].logoURI)}&amount=${paddedAmount}&destChainId=${selectedTokens[1].chainId}&toTokenAddress=${selectedTokens[1].address}&toTokenName=${selectedTokens[1].name}&toTokenLogo=${encodeURIComponent(selectedTokens[1].logoURI)}`);
+    
+            // Construct query parameters using URLSearchParams
+            const queryParams = new URLSearchParams({
+                srcChainId: selectedTokens[0].chainId,
+                fromTokenAddress: selectedTokens[0].address,
+                fromTokenName: selectedTokens[0].name,
+                fromTokenSymbol: selectedTokens[0].symbol,
+                fromTokenLogo: selectedTokens[0].logoURI,
+                fromTokenDecimals: selectedTokens[0].decimals,
+                destChainId: selectedTokens[1].chainId,
+                toTokenAddress: selectedTokens[1].address,
+                toTokenName: selectedTokens[1].name,
+                toTokenSymbol: selectedTokens[1].symbol,
+                toTokenLogo: selectedTokens[1].logoURI,
+                toTokenDecimals: selectedTokens[1].decimals,
+                amount: paddedAmount,
+                decimal: decimals,
+            }).toString();
+    
+            router.push(`/quote?${queryParams}`);
         }
     };
 
@@ -123,7 +141,7 @@ const HomePage = () => {
                         )}
                     </HStack>
                     {selectedTokens.length === 2 && isMobile && (
-                        <VStack spacing={4} mt={4} align="stretch">
+                        <VStack spacing={4} mt={4} align="stretch" className="text-white p-4 bg-zinc-700 rounded-lg shadow-lg" style={{ position: 'sticky', top: '9rem', zIndex: 10 }}>
                             <Input
                                 placeholder="Enter amount"
                                 value={amount}

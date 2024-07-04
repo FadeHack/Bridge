@@ -1,14 +1,12 @@
 // src/components/QuoteForm.js
 
-import { Box, Text, VStack, HStack, Image } from '@chakra-ui/react';
+import { Box, Text, VStack, HStack, Image, Grid, Flex } from '@chakra-ui/react';
 import { MdSwapHoriz } from 'react-icons/md';
 
-const QuoteForm = ({ quote }) => {
+const QuoteForm = ({ quote, fromTokenName, fromTokenLogo, toTokenName, toTokenLogo }) => {
     if (!quote) return null;
 
     const {
-        fromTokenAddress,
-        toTokenAddress,
         fromTokenAmount,
         quote: {
             crossChainSwap: {
@@ -26,22 +24,34 @@ const QuoteForm = ({ quote }) => {
     } = quote;
 
     return (
-        <VStack spacing={4} align="stretch">
-            <HStack spacing={2} alignItems="center">
-                <Image src={fromToken.logoURI} alt={fromToken.symbol} boxSize="20px" borderRadius="full" />
-                <Text>{fromToken.symbol}</Text>
-                <MdSwapHoriz size="20px" />
-                <Image src={toToken.logoURI} alt={toToken.symbol} boxSize="20px" borderRadius="full" />
-                <Text>{toToken.symbol}</Text>
-            </HStack>
-            <Text><strong>From Amount:</strong> {fromTokenAmount} {fromToken.symbol}</Text>
-            <Text><strong>To Amount:</strong> {toTokenAmount} {toToken.symbol}</Text>
-            <Text><strong>Quote Fee:</strong> {xyFee.amount} {xyFee.symbol}</Text>
-            <Text><strong>Estimated Gas:</strong> {estimatedGas}</Text>
-            <Text><strong>Minimum Received:</strong> {minimumReceived} {toToken.symbol}</Text>
-            <Text><strong>Estimated Transfer Time:</strong> {estimatedTransferTime} seconds</Text>
-            <Text><strong>Transaction Counts:</strong> {transactionCounts}</Text>
-        </VStack>
+        <Box className="p-6 bg-zinc-800 rounded-lg shadow-lg w-full">
+            <VStack spacing={4} align="stretch" className="text-white">
+            <Text><strong>Details: </strong></Text>
+
+                <Flex justify="space-between" align="center" className="bg-zinc-700 p-4 rounded-md">
+                    <HStack spacing={2} alignItems="center">
+                        <Image src={fromTokenLogo} alt={fromTokenName} boxSize="30px" borderRadius="full" />
+                        <Text>{fromTokenName}</Text>
+                    </HStack>
+                    <MdSwapHoriz size="24px" />
+                    <HStack spacing={2} alignItems="center">
+                        <Image src={toTokenLogo} alt={toTokenName} boxSize="30px" borderRadius="full" />
+                        <Text>{toTokenName}</Text>
+                    </HStack>
+                </Flex>
+                <Box className="bg-zinc-700 p-4 rounded-md">
+                    <Text><strong>From Amount:</strong> {fromTokenAmount} {fromTokenName}</Text>
+                    <Text><strong>To Amount:</strong> {toTokenAmount} {toTokenName}</Text>
+                    <Text><strong>Quote Fee:</strong> {xyFee.amount} {xyFee.symbol}</Text>
+                </Box>
+                <Box className="bg-zinc-700 p-4 rounded-md">
+                    <Text><strong>Estimated Gas:</strong> {estimatedGas}</Text>
+                    <Text><strong>Minimum Received:</strong> {minimumReceived} {toTokenName}</Text>
+                    <Text><strong>Estimated Transfer Time:</strong> {estimatedTransferTime} seconds</Text>
+                    <Text><strong>Transaction Counts:</strong> {transactionCounts}</Text>
+                </Box>
+            </VStack>
+        </Box>
     );
 };
 

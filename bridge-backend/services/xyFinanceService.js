@@ -11,7 +11,7 @@ const fetchQuote = async ({
     toTokenAddress,
   }) => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/quote`, {
+      const response = await axios.get(`${XY_FINANCE_BASE_URL}/quote`, {
         params: {
           srcChainId,
           fromTokenAddress,
@@ -20,7 +20,7 @@ const fetchQuote = async ({
           toTokenAddress,
         },
       });
-  
+      console.log(response)
       return response.data;
     } catch (error) {
       throw new Error(`Error fetching quote: ${error.message}`);
@@ -41,20 +41,20 @@ const fetchTokens = async () => {
   }
 };
 
-const fetchTransactionParams = async (data) => {
-  try {
-    const response = await axios.post(
-      `${XY_FINANCE_BASE_URL}/buildTx`,
-      data,
-      {
-        headers: {},
-      }
-    );
-    return response.data;
-  } catch (error) {
-    throw new Error("Error fetching transaction parameters");
-  }
-};
+const fetchTransactionParams = async (params) => {
+    try {
+
+      const response = await axios.get(
+        `${XY_FINANCE_BASE_URL}/swap`, {
+          params, // Pass query parameters as an object
+          headers: {},
+        }
+      );
+      return response.data;
+    } catch (error) {
+      throw new Error("Error fetching transaction parameters: " + error.message);
+    }
+  };
 
 module.exports = {
   fetchQuote,
