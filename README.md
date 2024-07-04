@@ -17,7 +17,6 @@
 ### Backend
 - Node.js
 - Express.js
-- Firebase
 - XY Finance API
 
 ## Screenshots of Working
