@@ -60,11 +60,6 @@
 
 ![Contact Page](screenshots/contact-page.png)
 
-### Sidebar Mobile View
-
-**Mobile Sidebar**
-
-![Sidebar](screenshots/sidebar-mobile-view.png)
 
 ## How to Run
 
