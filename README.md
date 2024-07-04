@@ -66,7 +66,7 @@
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/bridge-frontend.git
+    git clone https://github.com/FadeHack/bridge.git
     ```
 2. Navigate to the project directory:
     ```bash
@@ -87,23 +87,19 @@
 
 ### Backend
 
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/yourusername/bridge-backend.git
-    ```
-2. Navigate to the project directory:
+1. Navigate to the project directory:
     ```bash
     cd bridge-backend
     ```
-3. Install dependencies:
+2. Install dependencies:
     ```bash
     npm install
     ```
-4. Create a `.env` file from `.env.example`:
+3. Create a `.env` file from `.env.example`:
     ```bash
     cp .env.example .env
     ```
-5. Start the server:
+4. Start the server:
     ```bash
     npm start
     ```
