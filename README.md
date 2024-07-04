@@ -106,4 +106,4 @@
 
 ## Credit
 
-@FadeHack
+*Created by [@FadeHack](https://github.com/FadeHack)*
