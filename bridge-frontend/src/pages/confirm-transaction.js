@@ -1,8 +1,10 @@
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { Box, Heading, Text, VStack, Container, Spinner, Alert, AlertIcon, HStack, Image, Code, Divider } from '@chakra-ui/react';
+import { Box, Heading, Text, VStack, Container, Spinner, Alert, AlertIcon, HStack, Image, Divider, Grid, GridItem, Flex } from '@chakra-ui/react';
 import { apiHelper } from '../utils/apiHelper';
 import { API_ENDPOINTS } from '../constants/apiEndpoints';
+import { MdSwapHoriz } from 'react-icons/md';
+
 
 const TransactionDetail = ({ title, children }) => (
     <Box className="bg-zinc-800 p-4 rounded-md mb-4">
@@ -13,7 +15,7 @@ const TransactionDetail = ({ title, children }) => (
 
 const TokenInfo = ({ tokenAddress, tokenName, tokenLogo }) => (
     <HStack spacing={2} alignItems="center">
-        <Image src={tokenLogo} alt={tokenName} boxSize="24px" borderRadius="full" />
+        <Image src={tokenLogo} alt={tokenName} boxSize="40px" borderRadius="full" />
         <Text className="text-white">{tokenName}</Text>
     </HStack>
 );
@@ -72,7 +74,7 @@ const ConfirmTransaction = () => {
     return (
         <Container maxW="md" centerContent className='m-2 mt-12'>
             <Box className="p-4 m-auto rounded-lg shadow-md w-full h-screen overflow-hidden">
-                <Heading mb={4} className="text-center text-2xl text-white font-semibold">Confirm Transaction</Heading>
+                <Heading mb={4} className="text-center text-2xl text-white font-semibold"> Transaction </Heading>
                 {error ? (
                     <Alert status="error" color={'white'} my={10} justifyContent="center" alignItems={"center"} flexDirection={'column'}>
                         <AlertIcon />
@@ -81,54 +83,52 @@ const ConfirmTransaction = () => {
                 ) : (
                     result && result.srcChainId ? (
                         <VStack spacing={4} align="stretch" className='text-white'>
-                            <TransactionDetail title="Transaction Summary">
-                                <Text mb={2}><strong>Source Chain ID:</strong> {result.srcChainId}</Text>
-                                <Text mb={2}><strong>Destination Chain ID:</strong> {result.destChainId}</Text>
-                                <Text mb={2}><strong>From Token Address:</strong> {result.fromTokenAddress}</Text>
-                                <Text mb={2}><strong>To Token Address:</strong> {result.toTokenAddress}</Text>
-                                <Text mb={2}><strong>From Token Amount:</strong> {result.fromTokenAmount}</Text>
-                                <Text mb={2}><strong>To Token Amount:</strong> {result.toTokenAmount}</Text>
-                                <Text mb={2}><strong>From Token Value:</strong> ${result.fromTokenValue}</Text>
-                                <Text mb={2}><strong>To Token Value:</strong> ${result.toTokenValue}</Text>
-                                <Text mb={2}><strong>Receiver Address:</strong> {result.receiveAddress}</Text>
-                                <Text mb={2}><strong>Minimum Received:</strong> {result.minimumReceived}</Text>
-                                <Text mb={2}><strong>Estimated Gas:</strong> {result.estimatedGas}</Text>
-                                <Text mb={2}><strong>XY Fee:</strong> {result.xyFee?.amount} {result.xyFee?.symbol}</Text>
-                                <Text mb={2}><strong>Estimated Transfer Time:</strong> {result.estimatedTransferTime} seconds</Text>
-                                <Text mb={2}><strong>Transaction Counts:</strong> {result.transactionCounts}</Text>
-                            </TransactionDetail>
+                            {/* Transaction Summary - Use Grid for better layout */}
+                            <Grid templateColumns="repeat(2, 1fr)" gap={4} mb={4} className="text-white">
+                                <GridItem>
+                                    <TransactionDetail title="Transaction Summary">
+                                        <Text mb={2}><strong>Source Chain ID:</strong> {result.srcChainId}</Text>
+                                        <Text mb={2}><strong>Destination Chain ID:</strong> {result.destChainId}</Text>
+                                        <Text mb={2}><strong>From Token Address:</strong> {result.fromTokenAddress}</Text>
+                                        <Text mb={2}><strong>To Token Address:</strong> {result.toTokenAddress}</Text>
+                                        <Text mb={2}><strong>From Token Amount:</strong> {result.fromTokenAmount}</Text>
+                                        <Text mb={2}><strong>To Token Amount:</strong> {result.toTokenAmount}</Text>
+                                    </TransactionDetail>
+                                </GridItem>
+                                <GridItem>
+                                    <TransactionDetail title="Transaction Summary">
+                                        <Text mb={2}><strong>From Token Value:</strong> ${result.fromTokenValue}</Text>
+                                        <Text mb={2}><strong>To Token Value:</strong> ${result.toTokenValue}</Text>
+                                        <Text mb={2}><strong>Receiver Address:</strong> {result.receiveAddress}</Text>
+                                        <Text mb={2}><strong>Minimum Received:</strong> {result.minimumReceived}</Text>
+                                        <Text mb={2}><strong>Estimated Gas:</strong> {result.estimatedGas}</Text>
+                                        <Text mb={2}><strong>XY Fee:</strong> {result.xyFee?.amount} {result.xyFee?.symbol}</Text>
+                                    </TransactionDetail>
+                                </GridItem>
+                                <GridItem colSpan={2}>
+                                    <TransactionDetail title="Estimated Time & Counts">
+                                        <Text mb={2}><strong>Estimated Transfer Time:</strong> {result.estimatedTransferTime} seconds</Text>
+                                        <Text mb={2}><strong>Transaction Counts:</strong> {result.transactionCounts}</Text>
+                                    </TransactionDetail>
+                                </GridItem>
+                            </Grid>
 
-                            <TransactionDetail title="Cross-Chain Swap">
-                                <Text mb={2}><strong>From Token:</strong> {result.quote.crossChainSwap.fromToken.symbol}</Text>
-                                <Text mb={2}><strong>To Token:</strong> {result.quote.crossChainSwap.toToken.symbol}</Text>
-                                <Text mb={2}><strong>DEX Names:</strong> {result.quote.crossChainSwap.dexNames.join(', ')}</Text>
-                            </TransactionDetail>
-
-                            <TransactionDetail title="Destination Chain Swap">
-                                <Text mb={2}><strong>From Token:</strong> {result.quote.destChainSwaps.fromToken.symbol}</Text>
-                                <Text mb={2}><strong>To Token:</strong> {result.quote.destChainSwaps.toToken.symbol}</Text>
-                                <Text mb={2}><strong>DEX Names:</strong> {result.quote.destChainSwaps.dexNames.join(', ')}</Text>
-                            </TransactionDetail>
 
                             <Divider my={4} />
 
-                            <HStack spacing={4} alignItems="center" justifyContent="center">
+                            <Flex justifyContent="center" alignItems="center">
                                 <TokenInfo 
                                     tokenAddress={fromTokenAddress}
                                     tokenName={fromTokenName}
                                     tokenLogo={fromTokenLogo}
                                 />
-                                <Text className="text-white">→</Text>
+                                <MdSwapHoriz size={'30px'} />
                                 <TokenInfo 
                                     tokenAddress={toTokenAddress}
                                     tokenName={toTokenName}
                                     tokenLogo={toTokenLogo}
                                 />
-                            </HStack>
-
-                            <TransactionDetail title="Transaction Data">
-                                <Code colorScheme="teal" p={2}>{result.tx.data}</Code>
-                            </TransactionDetail>
+                            </Flex>
                         </VStack>
                     ) : (
                         <Alert status="error" color={'white'} my={10} justifyContent="center" alignItems={"center"} flexDirection={'column'}>

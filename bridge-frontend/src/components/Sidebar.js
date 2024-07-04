@@ -1,5 +1,3 @@
-// src/components/Sidebar.js
-
 import { Box, Text, Divider, VStack, Link, Flex, IconButton } from '@chakra-ui/react';
 import { HiHome, HiInformationCircle, HiMail, HiMenu, HiX } from 'react-icons/hi';
 import { useRouter } from 'next/navigation';
@@ -125,7 +123,9 @@ const Sidebar = () => {
                             Contact
                         </Link>
                     </VStack>
-                    <Text className="text-sm text-center mt-auto">© 2024 Bridge</Text>
+                    <Flex justifyContent="center" alignItems="center" className="absolute bottom-4 w-full"> 
+                        <Text className="text-sm text-center ">© 2024 Bridge</Text> 
+                    </Flex>
                 </Box>
             )}
         </>

@@ -161,7 +161,7 @@ const HomePage = () => {
                         </VStack>
                     )}
                     <Heading my={12} className="text-center text-2xl font-semibold text-white">
-                        Select a Token
+                        Select Tokens
                     </Heading>
                     <TokenList selectedTokens={selectedTokens} onSelectToken={handleSelectToken} />
                 </VStack>

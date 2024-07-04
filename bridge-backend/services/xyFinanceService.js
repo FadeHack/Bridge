@@ -20,7 +20,6 @@ const fetchQuote = async ({
           toTokenAddress,
         },
       });
-      console.log(response)
       return response.data;
     } catch (error) {
       throw new Error(`Error fetching quote: ${error.message}`);
@@ -50,6 +49,7 @@ const fetchTransactionParams = async (params) => {
           headers: {},
         }
       );
+      console.log(response.data);
       return response.data;
     } catch (error) {
       throw new Error("Error fetching transaction parameters: " + error.message);
