@@ -9,7 +9,7 @@
 ## Technology Used
 
 ### Frontend
-- React Native
+- ReactJs
 - Next.js
 - Tailwind CSS
 - Chakra UI
