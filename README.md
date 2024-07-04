@@ -27,18 +27,36 @@
 
 **Home**
 
-![Homepage - Token Listing](screenshots/homepage-token-listing.png)
-![Homepage - Mobile View](screenshots/homepage-mobile-view.png)
+<div class="image-container">
+  <img src="screenshots/homepage-token-listing.png" alt="Homepage - Token Listing">
+  <img src="screenshots/homepage-mobile-view.png" alt="Homepage - Mobile View">
+</div>
+
+<style>
+  .image-container {
+    display: flex; 
+    justify-content: space-around; 
+    align-items: center; 
+  }
+
+  .image-container img {
+    max-width: 50%; 
+  }
+</style>
 
 **Tokens Selection**
 
-![Token Selection - Swap Tokens](screenshots/token-selection.png)
-![Token Selection - Mobile View](screenshots/token-selection-mobile-view.png)
+<div class="image-container">
+  <img src="screenshots/token-selection.png" alt="Token Selection - Swap Tokens">
+  <img src="screenshots/token-selection-mobile-view.png" alt="Token Selection - Mobile View">
+</div>
 
 #### Quote
 
-![Quote - Desktop](screenshots/quote-desktop.png)
-![Quote - Mobile View](screenshots/quote-mobile-view.png)
+<div class="image-container">
+  <img src="screenshots/quote-desktop.png" alt="Quote - Desktop">
+  <img src="screenshots/quote-mobile-view.png" alt="Quote - Mobile View">
+</div>
 
 #### Transaction Page
 
@@ -107,3 +125,16 @@
 ## Credit
 
 @FadeHack
+
+
+<style>
+  .image-container {
+    display: flex; /* Enable flexbox layout */
+    justify-content: space-around; /* Space images evenly */
+    align-items: center; /* Vertically center images */
+  }
+
+  .image-container img {
+    max-width: 50%; /* Set maximum width for images */
+  }
+</style>
