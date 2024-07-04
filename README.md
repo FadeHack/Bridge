@@ -20,51 +20,49 @@
 - Firebase
 - XY Finance API
 
+## Screenshots of Working
 
-### Screenshots of Working
-
-#### HomePage
+### HomePage
 
 **Home**
 
-<div style="float: left; width: 50%;">
-  ![Homepage - Token Listing](screenshots/homepage-token-listing.png)
-</div>
-<div style="float: right; width: 50%;">
-  ![Homepage - Mobile View](screenshots/homepage-mobile-view.png)
-</div>
+| Desktop View | Mobile View |
+|--------------|-------------|
+| ![Homepage - Token Listing](screenshots/homepage-token-listing.png) | ![Homepage - Mobile View](screenshots/homepage-mobile-view.png) |
 
 **Tokens Selection**
 
-<div style="float: left; width: 50%;">
-  ![Token Selection - Swap Tokens](screenshots/token-selection.png)
-</div>
-<div style="float: right; width: 50%;">
-  ![Token Selection - Mobile View](screenshots/token-selection-mobile-view.png)
-</div>
+| Desktop View | Mobile View |
+|--------------|-------------|
+| ![Token Selection - Swap Tokens](screenshots/token-selection.png) | ![Token Selection - Mobile View](screenshots/token-selection-mobile-view.png) |
 
-#### Quote
+### Quote
 
-<div style="float: left; width: 50%;">
-  ![Quote - Desktop](screenshots/quote-desktop.png)
-</div>
-<div style="float: right; width: 50%;">
-  ![Quote - Mobile View](screenshots/quote-mobile-view.png)
-</div>
+| Desktop View | Mobile View |
+|--------------|-------------|
+| ![Quote - Desktop](screenshots/quote-desktop.png) | ![Quote - Mobile View](screenshots/quote-mobile-view.png) |
 
-#### Transaction Page
+### Transaction Page
+
+**Successful Transaction**
 
 ![Transaction - Successful Transaction](screenshots/transaction-success.png)
 
-#### About Page
+### About Page
+
+**About Section**
 
 ![About Section](screenshots/about-section.png)
 
-#### Contact Page
+### Contact Page
+
+**Contact Page**
 
 ![Contact Page](screenshots/contact-page.png)
 
-#### Sidebar Mobile View
+### Sidebar Mobile View
+
+**Mobile Sidebar**
 
 ![Sidebar](screenshots/sidebar-mobile-view.png)
 
