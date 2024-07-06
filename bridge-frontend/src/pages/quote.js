@@ -34,7 +34,6 @@ const QuotePage = () => {
             setLoading(true);
             try {
                 const response = await apiHelper.get(`${API_ENDPOINTS.QUOTES}?srcChainId=${srcChainId}&fromTokenAddress=${fromTokenAddress}&amount=${amount}&destChainId=${destChainId}&toTokenAddress=${toTokenAddress}`);
-                console.log(response);
                 if (response.isSuccess) {
                     setQuote(response);
                     setError(null);

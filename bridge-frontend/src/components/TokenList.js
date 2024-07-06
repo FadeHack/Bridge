@@ -1,5 +1,3 @@
-// src/components/TokenList.js
-
 import { useEffect, useState } from 'react';
 import { Box, SimpleGrid, Spinner, Text, VStack, HStack, Image } from '@chakra-ui/react';
 import { HiCheck } from 'react-icons/hi';
@@ -16,7 +14,12 @@ const TokenList = ({ selectedTokens, onSelectToken }) => {
             try {
                 const data = await apiHelper.get(API_ENDPOINTS.TOKENS);
                 if (data.isSuccess) {
-                    setTokens(data.recommendedTokens);
+                    const uniqueTokens = data.recommendedTokens.filter((token, index, self) =>
+                        index === self.findIndex((t) => (
+                            t.address === token.address
+                        ))
+                    );
+                    setTokens(uniqueTokens);
                 }
             } catch (error) {
                 console.error('Failed to fetch tokens:', error);

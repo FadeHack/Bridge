@@ -49,7 +49,6 @@ const fetchTransactionParams = async (params) => {
           headers: {},
         }
       );
-      console.log(response.data);
       return response.data;
     } catch (error) {
       throw new Error("Error fetching transaction parameters: " + error.message);

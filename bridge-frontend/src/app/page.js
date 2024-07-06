@@ -1,5 +1,3 @@
-// src/app/page.js
-
 "use client";
 import { useState, useEffect } from 'react';
 import { Box, Button, Heading, HStack, Text, VStack, Image, Input, useBreakpointValue } from '@chakra-ui/react';
@@ -18,13 +16,10 @@ const HomePage = () => {
     const inputWidth = useBreakpointValue({ base: '100%', md: '150px' });
 
     const handleSelectToken = (token) => {
-        if (selectedTokens.some((t) => t.address === token.address)) {
-            handleDeselectToken(token);
-        } else if (selectedTokens.length < 2) {
-            setSelectedTokens((prev) => [...prev, token]);
-        } else {
-            alert('2 tokens already selected. Unselect any one to select another.');
-        }
+        const updatedTokens = selectedTokens.some(t => t.address === token.address)
+            ? selectedTokens.filter(t => t.address !== token.address)
+            : [...selectedTokens.filter(t => t.chainId !== token.chainId), token];
+        setSelectedTokens(updatedTokens);
     };
 
     const handleDeselectToken = (token) => {
@@ -45,7 +40,7 @@ const HomePage = () => {
             // Assuming both tokens have the same decimals
             const decimals = selectedTokens[0].decimals;
             const paddedAmount = (parseFloat(amount) * Math.pow(10, decimals)).toFixed(0);
-    
+
             // Construct query parameters using URLSearchParams
             const queryParams = new URLSearchParams({
                 srcChainId: selectedTokens[0].chainId,
@@ -63,7 +58,7 @@ const HomePage = () => {
                 amount: paddedAmount,
                 decimal: decimals,
             }).toString();
-    
+
             router.push(`/quote?${queryParams}`);
         }
     };
@@ -80,6 +75,7 @@ const HomePage = () => {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
+
 
     return (
         <Box className="min-h-screen bg-zinc-900">
@@ -163,6 +159,9 @@ const HomePage = () => {
                     <Heading my={12} className="text-center text-2xl font-semibold text-white">
                         Select Tokens
                     </Heading>
+                    <Text className="text-center text-teal-500 mb-6">
+                    (Please ensure the selected tokens have different Chain IDs.)
+                    </Text>
                     <TokenList selectedTokens={selectedTokens} onSelectToken={handleSelectToken} />
                 </VStack>
             </Box>
