@@ -45,7 +45,9 @@
 
 **Successful Transaction**
 
-![Transaction - Successful Transaction](screenshots/transaction-success.png)
+| Desktop View | Mobile View |
+|--------------|-------------|
+| ![Transaction - Desktop](screenshots/transaction-success.png) | ![Transaction - Mobile View](screenshots/transaction-mobile-view.png) |
 
 ### About Page
 

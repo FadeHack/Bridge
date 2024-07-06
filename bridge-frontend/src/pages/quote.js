@@ -79,7 +79,7 @@ const QuotePage = () => {
 
     return (
         <Container w-full centerContent className='m-2 mt-12'>
-            <Box className="p-4 m-auto rounded-lg shadow-md w-full h-screen overflow-hidden">
+            <Box className="p-4 m-auto rounded-lg shadow-md w-full overflow-hidden">
                 <Heading mb={4} className="text-center text-2xl text-white font-semibold">Quote</Heading>
                 {error ? (
                     <Alert status="error" color={'white'} my={10} justifyContent="center" alignItems={"center"} flexDirection={'column'}>
