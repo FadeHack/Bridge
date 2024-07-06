@@ -62,7 +62,7 @@ const TokenList = ({ selectedTokens, onSelectToken }) => {
                                     </HStack>
                                     <HStack spacing={1}>
                                         <Text className="text-gray-400">Address:</Text>
-                                        <Text className="text-white truncate w-40">{token.address}</Text>
+                                        <Text className="text-white truncate w-28">{token.address}</Text>
                                     </HStack>
                                     <HStack spacing={1}>
                                         <Text className="text-gray-400">Symbol:</Text>

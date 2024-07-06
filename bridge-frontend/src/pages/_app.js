@@ -8,7 +8,7 @@ export default function App({ Component, pageProps }) {
       <Box className="col-span-2 bg-gray-800 text-white fixed h-full z-10">
         <Sidebar />
       </Box>
-      <Box className="col-span-10 md:col-start-3 p-6  justify-center">
+      <Box className="col-span-10 md:col-start-3 p-6 justify-center">
         <Component {...pageProps} />
       </Box>
     </Box>
